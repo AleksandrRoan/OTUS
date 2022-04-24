@@ -23,27 +23,34 @@ public class HomeworkTest {
 
         int[] correctAnswers = {3, 2, 3, 1};
 
-        Scanner scanner = new Scanner(System.in);
+        int numberQuestion = 0;
+        boolean isException = true;
+        while (numberQuestion < questions.length) {
+            if(isException) {
+                System.out.println(questions[numberQuestion]);
 
-        for (int i = 0; i < questions.length; i++) {
-
-            System.out.println(questions[i]);
-
-            for (int j = 0; j < answerOptions.length; j++) {
-                System.out.println(answerOptions[i][j]);
+                for (int i = 0; i < answerOptions.length; i++) {
+                    System.out.println(answerOptions[numberQuestion][i]);
+                }
             }
-
             System.out.print("Ваш ответ: ");
 
-            int answer = scanner.nextInt();
-
-            if (answer == correctAnswers[i]) {
-                correctCount++;
-            } else {
-                wrongCount++;
+            try {
+                Scanner scanner = new Scanner(System.in);
+                int answer = scanner.nextInt();
+                if (answer == correctAnswers[numberQuestion]) {
+                    correctCount++;
+                } else {
+                    wrongCount++;
+                }
+            } catch (Exception e) {
+                System.out.println("Вы ввели неверные данные!");
+                isException = false;
+                continue;
             }
-
             System.out.println();
+            numberQuestion++;
+            isException = true;
         }
 
         System.out.println("Результат: правильно " + correctCount + ", неправильно " + wrongCount);
