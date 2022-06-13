@@ -1,10 +1,13 @@
 package bank;
 
 public class Account {
-    private int coin;
-    public Client client;
+    protected Client client;
 
-    public int getCoin() {
-        return coin;
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }

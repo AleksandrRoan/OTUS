@@ -16,7 +16,7 @@ public class NewTesting {
 
         Object[][][] questionsAll = {{{firstQuestion}, {"1. Наследование", "2. Инкапсуляция", "3. Полиморфизм", "4. Абстракция"}, {3}},
                 {{secondQuestion}, {"1. call()", "2. sleep()", "3. join()", "4. stop()"}, {2}},
-                {{thirdQuestion}, {"1. int x = (double) 43.6;", "2. int x = (int) 54.4;", "3. int x = (int) 45.9;", "4. int x; x = 43.6;"}, {3}},
+                {{thirdQuestion}, {"1. int x = (double) 43.6;", "2. int x = 54.4;", "3. int x = (int) 45.9;", "4. int x; x = 43.6;"}, {3}},
                 {{fourthQuestion}, {"1. Error", "2. 0.28", "3. 028", "4. 28"}, {1}}};
 
         int numberQuestion = 0;
