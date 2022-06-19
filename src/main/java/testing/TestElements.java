@@ -1,6 +1,5 @@
 package testing;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -24,25 +23,41 @@ public class TestElements {
     private static final String correctAnswer2 = "sleep()";
     private static final String correctAnswer3 = "int x = (int) 45.9;";
     private static final String correctAnswer4 = "Error";
+    private static final List<Question> questions = new ArrayList<>();
     private static int correctCount = 0;
     private static int wrongCount = 0;
 
     public static void main(String[] args) {
+        TestElements.initialization();
+        TestElements.testing(questions);
+
+        System.out.println("Результат: правильно " + correctCount + ", неправильно " + wrongCount);
+    }
+
+    public static void initialization() {
         Question question1 = new Question(first);
         Question question2 = new Question(second);
         Question question3 = new Question(third);
         Question question4 = new Question(fourth);
-        List<String> answerOptionsList1 = new ArrayList<>(List.of(answerOptions1));
-        List<String> answerOptionsList2 = new ArrayList<>(List.of(answerOptions2));
-        List<String> answerOptionsList3 = new ArrayList<>(List.of(answerOptions3));
-        List<String> answerOptionsList4 = new ArrayList<>(List.of(answerOptions4));
+        question1.setAnswerOptionsList(answerOptions1);
+        question2.setAnswerOptionsList(answerOptions2);
+        question3.setAnswerOptionsList(answerOptions3);
+        question4.setAnswerOptionsList(answerOptions4);
+        question1.setCorrectAnswer(correctAnswer1);
+        question2.setCorrectAnswer(correctAnswer2);
+        question3.setCorrectAnswer(correctAnswer3);
+        question4.setCorrectAnswer(correctAnswer4);
 
-        TestElements.getTesting(question1, answerOptionsList1, correctAnswer1);
-        TestElements.getTesting(question2, answerOptionsList2, correctAnswer2);
-        TestElements.getTesting(question3, answerOptionsList3, correctAnswer3);
-        TestElements.getTesting(question4, answerOptionsList4, correctAnswer4);
+        questions.add(question1);
+        questions.add(question2);
+        questions.add(question3);
+        questions.add(question4);
+    }
 
-        System.out.println("Результат: правильно " + correctCount + ", неправильно " + wrongCount);
+    public static void testing(List<Question> questions) {
+        for (Question question : questions) {
+            TestElements.getTesting(question, question.getAnswerOptionsList(), question.getCorrectAnswer());
+        }
     }
 
     public static void getTesting(Question question, List<String> answerOptionsList, String correctAnswer) {
